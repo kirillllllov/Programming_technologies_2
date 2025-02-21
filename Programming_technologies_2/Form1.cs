@@ -5,6 +5,7 @@
         public Form1()
         {
             InitializeComponent();
+            sentence.Text = Properties.Settings.Default.result.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -19,7 +20,9 @@
             {
                 return; // прерываем обработчик клика, если ввели какую-то ерунду
             }
-            
+            Properties.Settings.Default.result = Logic.CalculateLetterPercentage(result);
+            Properties.Settings.Default.Save();
+
             MessageBox.Show("Вы ввели: " + result + "\n" + Logic.CalculateLetterPercentage(result));
 
         }
