@@ -6,25 +6,39 @@
         {
             InitializeComponent();
             sentence.Text = Properties.Settings.Default.result.ToString();
+            this.KeyPreview = true; // Позволяет форме перехватывать нажатия клавиш
+            this.KeyDown += new KeyEventHandler(Form1_KeyDown);
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1.PerformClick(); // Имитируем клик по кнопке
+                e.SuppressKeyPress = true; // Предотвращаем стандартный звуковой сигнал
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string result;
+            string result = this.sentence.Text.Trim(); // Убираем лишние пробелы
+
+            if (string.IsNullOrEmpty(result)) // Проверяем, пуст ли текст
+            {
+                return; // Если да, просто выходим из метода
+            }
+
             try
             {
-                result = this.sentence.Text;
-                
+                Properties.Settings.Default.result = Logic.CalculateLetterPercentage(result);
+                Properties.Settings.Default.Save();
+
+                MessageBox.Show("Вы ввели: " + result + "\n" + Logic.CalculateLetterPercentage(result));
             }
-            catch (FormatException) // тип ошибки, которую перехватываем
+            catch (FormatException)
             {
-                return; // прерываем обработчик клика, если ввели какую-то ерунду
+                return;
             }
-            Properties.Settings.Default.result = Logic.CalculateLetterPercentage(result);
-            Properties.Settings.Default.Save();
-
-            MessageBox.Show("Вы ввели: " + result + "\n" + Logic.CalculateLetterPercentage(result));
-
         }
 
         public class Logic

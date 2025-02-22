@@ -35,9 +35,9 @@
             // 
             // sentence
             // 
-            sentence.Location = new Point(12, 40);
+            sentence.Location = new Point(12, 39);
             sentence.Name = "sentence";
-            sentence.Size = new Size(378, 23);
+            sentence.Size = new Size(553, 23);
             sentence.TabIndex = 0;
             // 
             // label1
@@ -45,15 +45,15 @@
             label1.AutoSize = true;
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(133, 15);
+            label1.Size = new Size(218, 15);
             label1.TabIndex = 1;
-            label1.Text = "% букв в предложении";
+            label1.Text = "Посчёт процента букв в предложении";
             // 
             // button1
             // 
-            button1.Location = new Point(396, 40);
+            button1.Location = new Point(12, 68);
             button1.Name = "button1";
-            button1.Size = new Size(153, 23);
+            button1.Size = new Size(553, 28);
             button1.TabIndex = 2;
             button1.Text = "Посчитать";
             button1.UseVisualStyleBackColor = true;
@@ -63,12 +63,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(577, 99);
             Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(sentence);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Counting the number of letters in a sentence";
             ResumeLayout(false);
             PerformLayout();
         }
